@@ -1,0 +1,101 @@
+﻿@model WebApplication3.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/AD.cshtml";
+}
+
+<h2>SỬA THÔNG TIN SẢN PHẨM</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MASP)
+    @*<div class="form-group">
+        Mã sản phẩm
+        <div class="col-md-10">
+         @Model.MASP
+        </div>
+    </div>*@
+
+    <div class="form-group">
+     Loại sản phẩm
+        <div class="col-md-10">
+            @Html.DropDownList("MALOAI")
+        </div>
+    </div>
+
+    <div class="form-group">
+       Nhà cung cấp
+        <div class="col-md-10">
+            @Html.DropDownList("MANCC")
+        </div>
+    </div>
+
+    <div class="form-group">
+      Tên sản phẩm
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TENSP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TENSP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+    Ảnh
+        <div class="col-md-10">
+          
+            <input type="file" name="File" />
+            <img style="height:50px;width:50px" src="~/Content/assets/img/ao/@Model.ANH" />
+          
+            @Html.ValidationMessageFor(model => model.ANH, "", new { @class = "text-danger" })
+            @ViewBag.Thongbao
+        </div>
+    </div>
+
+    <div class="form-group">
+        Số lượng
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SL, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+       Giá
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DONGIA, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DONGIA, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+       Mô tả
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MOTA, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MOTA, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+      Ngày cập nhật
+        <div class="col-md-10">
+            <input type="date" name="NGAYCAPNHAT" />
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-success" />|  <input type="reset" value="Làm lại" class="btn btn-danger" />
+        </div>
+    </div>
+</div>
+}
+<div>
+     @Html.ActionLink("Trở về", "QLSP")
+</div>
+

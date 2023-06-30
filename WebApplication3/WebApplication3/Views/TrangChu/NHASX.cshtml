@@ -1,0 +1,34 @@
+﻿
+@model IEnumerable<WebApplication3.Models.NHACUNGCAP>
+
+@*<div class="list-group">
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("SPTheoNCC","TrangChu",new {id=item.MANCC })" class="list-group-item">
+              @item.TENNCC
+
+
+
+            </a>
+
+        }
+    </div>*@
+@foreach (var item in Model)
+{
+<a href="@Url.Action("SPTheoNCC","TrangChu",new {@id=item.MANCC })">
+   
+
+    <ul id="portfolio-flters">
+       
+        <li>
+            @item.TENNCC
+        </li>
+        </ul>
+
+</a>
+
+}
+
+
+
+

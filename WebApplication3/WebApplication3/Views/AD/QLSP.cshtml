@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebApplication3.Models.SANPHAM>
+@{
+    ViewBag.Title = "QLSP";
+    Layout = "~/Views/Shared/AD.cshtml";
+}
+
+<style type="text/css">
+    table, th, td {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+    table th{
+        width:300px;
+    }
+</style>
+<h2 style="text-align:center">Thông tin hàng hóa</h2>
+<p>
+    @Html.ActionLink("Thêm mới","Create")
+</p>
+<table align="center" class="table">
+    <tr>
+        <th>
+          MÃ sản phẩm
+        </th>
+        <th>
+          Tên sản phẩm
+        </th>
+        <th>
+          Ảnh 
+        </th>
+        <th>
+         Số lượng
+        </th>
+        <th>
+           Giá
+        </th>
+        <th>
+          Mã loại
+
+        </th>
+        <th>
+           Mã nhà cung câp
+        </th>
+        <th>
+
+        </th>
+        <td>
+
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <th>
+          @item.MASP
+        </th>
+        <th>
+            @item.TENSP
+        </th>
+        <th>
+           
+            <img style="width:50px;height:50px" src="@Url.Content("~/Content/assets/img/ao/"+item.ANH)" />
+        </th>
+        <th>
+            @item.SL
+        </th>
+        <th>
+            @item.DONGIA
+        </th>
+        <th>
+            @item.MALOAI
+        </th>
+        <th>
+            @item.MANCC
+        </th>
+        <th>
+            @Html.ActionLink("Xóa", "Delete",new { id=item.MASP})|@Html.ActionLink("Xem", "Detail", new { id = item.MASP })|@Html.ActionLink("Sửa", "Edit", new { id = item.MASP })
+        </th>
+    </tr>
+    }
+
+</table>

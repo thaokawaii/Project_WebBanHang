@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication3.Models.SANPHAM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Trangchu.cshtml";
+}
+<div class="text-center">
+    <h1>CÁC SẢN PHẨM NỔI BẬT</h1>
+</div>
+ 
+<div class="row">
+    @foreach (var sp in Model)
+    {
+
+        <div class="col-sm-1 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Detail","TrangChu",new {@id=sp.MASP })">
+                    <img alt="@sp.TENSP" src="~/Content/assets/img/ao/@sp.ANH" style="width: 100%;height:300px" />
+
+
+                    <div>
+                        <br />
+                        <h4 style="text-align:center">
+                            @sp.TENSP
+
+
+                        </h4>
+                        <p></p>
+                    </div>
+                    <p style="text-align:center;margin-left:50px">Giá:<span style="color:red">@string.Format("{0:0,0}", sp.DONGIA) vnd</span> </p>
+                   
+                </a>
+
+            </div>
+        
+        </div>
+       
+    }
+
+</div>

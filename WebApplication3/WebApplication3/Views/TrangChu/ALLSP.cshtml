@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApplication3.Models.SANPHAM>
+@{
+    ViewBag.Title = "ALLSP";
+    Layout = "~/Views/Shared/DN.cshtml";
+}
+<div class="text-center">
+    <h1>TẤT CẢ SẢN PHẨM</h1>
+</div>
+@using (Html.BeginForm("Tim", "TrangChu", FormMethod.Get)) // -- phần thay đổi
+{
+    <p>
+        Title: @Html.TextBox("id") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+    <div class="row">
+
+        @foreach (var sp in Model)
+        {
+
+            <div class="col-sm-1 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <a href="@Url.Action("Detail","TrangChu",new {@id=sp.MASP })">
+                        <img alt="@sp.TENSP" src="~/Content/assets/img/ao/@sp.ANH" style="width: 100%;height:300px" />
+
+
+                        <div>
+                            <br />
+                            <h4 style="text-align:center">
+                                @sp.TENSP
+
+
+                            </h4>
+                            <p></p>
+                        </div>
+                    </a>
+                    <p style="text-align:center;margin-left:50px">Giá:<span style="color:red">@string.Format("{0:0,0}", sp.DONGIA) vnd</span> </p>
+
+                </div>
+
+            </div>
+        }
+
+    </div>

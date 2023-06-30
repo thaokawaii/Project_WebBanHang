@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/DN.cshtml";
+}
+
+<style type="text/css">
+    #datmua a{
+        clear:both;
+        background-color:red;
+        color:white;
+        width:120px;
+        height:35px;
+        display:block;
+        float:right;
+        text-align:center;
+        font-weight:bold;
+        padding-top:10px;
+        text-decoration:none;
+    }
+    #datmua a:hover{
+        background-color:gray;
+        color:red;
+    }
+</style>
+<h3>Thông tin chi tiết</h3>
+<div>
+    <div style="width:40%;float:left;border-left:dotted 1px;border-color:azure">
+        <img src="~/Content/assets/img/ao/@Model.ANH" width="100%"/>
+
+    </div>
+    <div style="width:60%;float:left;padding:10px">
+        <h4 style="font-weight:bold;color:red">
+            Tên sản phẩm:@Model.TENSP
+        </h4>
+        <p style="text-align:justify">
+            <span style="font-weight:bold">
+                Mô tả:
+            </span>
+            @Model.MOTA
+        </p>
+        <p style="font-weight:bold">
+            Giá bán:<span style="color:red;font-size:10pt">@string.Format("{0:0,0}", Model.DONGIA) VND</span>
+        </p>
+        <p style="float:right">
+            <img src="~/Content/assets/img/ao/size.png"/>
+        </p>
+    </div>
+    <div>
+        <div id="datmua">
+            <a href="@Url.Action("themGH", "Giohang", new { @maSP = @Model.MASP,@strURL=Request.Url.ToString()})" class="list-group-item">
+                ĐẶT MUA
+
+            </a>
+        </div>
+    </div>
+</div>
+
