@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_BANHANG" Class="QLBHDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-74GC5N8\SQLEXPRESS;Initial Catalog=QL_BANHANG;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QL_BANHANGConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-FINT84M\SQLEXPRESS;Initial Catalog=QL_BANHANG;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QL_BANHANGConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ADMIN" Member="ADMINs">
     <Type Name="ADMIN">
       <Column Name="TENDN" Type="System.String" DbType="Char(30)" CanBeNull="true" />
@@ -16,18 +16,6 @@
       <Association Name="SANPHAM_CTDONHANG" Member="SANPHAM" ThisKey="MASP" OtherKey="MASP" Type="SANPHAM" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DONDATHANG" Member="DONDATHANGs">
-    <Type Name="DONDATHANG">
-      <Column Name="SODH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MAKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DATHANHTOAN" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="NGAYDH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NGAYGIAO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="DONDATHANG_CTDONHANG" Member="CTDONHANGs" ThisKey="SODH" OtherKey="SODH" Type="CTDONHANG" />
-      <Association Name="KHACHHANG_DONDATHANG" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
     <Type Name="KHACHHANG">
       <Column Name="MAKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -39,6 +27,18 @@
       <Column Name="EMAIL" Type="System.String" DbType="Char(30)" CanBeNull="true" />
       <Column Name="NGAYSINH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="KHACHHANG_DONDATHANG" Member="DONDATHANGs" ThisKey="MAKH" OtherKey="MAKH" Type="DONDATHANG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DONDATHANG" Member="DONDATHANGs">
+    <Type Name="DONDATHANG">
+      <Column Name="SODH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MAKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATHANHTOAN" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="NGAYDH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NGAYGIAO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="DONDATHANG_CTDONHANG" Member="CTDONHANGs" ThisKey="SODH" OtherKey="SODH" Type="CTDONHANG" />
+      <Association Name="KHACHHANG_DONDATHANG" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.LOAISP" Member="LOAISPs">

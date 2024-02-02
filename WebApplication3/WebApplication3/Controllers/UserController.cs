@@ -55,7 +55,7 @@ namespace WebApplication3.App_Start
             }
             if (string.IsNullOrEmpty(dienthoai))
             {
-                ViewData["Loi5"] = "Phải nhập";
+                ViewData["Loi6"] = "Phải nhập";
             }
             else
             {
